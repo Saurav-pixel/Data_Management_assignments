@@ -1,0 +1,28 @@
+show databases;
+use worldcup;
+show tables;
+select * from players;
+select * from teams;
+
+Query 1:
+
+ SELECT team ,max( goalsFor / goalsAgainst) FROM teams;
+
+Query 2:
+
+ SELECT avg(passes) AS average_defender_passes FROM players where position ='defender';
+
+ SELECT avg(passes) AS  average_passes_by_forward FROM players WHERE position ='forward';
+
+
+Query 3:
+ SELECT team FROM players WHERE team LIKE '%ia%' AND minutes<200 AND passes>100;
+
+Query 4:
+  SELECT team, avg(passes/minutes) FROM  players;
+
+Query 5 :
+ SELECT count(surname) FROM players WHERE team IN (SELECT team from teams WHERE ranking >= 1 AND ranking <= 9) AND minutes > 350;
+
+ 
+
