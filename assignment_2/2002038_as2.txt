@@ -1,0 +1,29 @@
+show databases;
+use titanic;
+show tables;
+select * from titanic;
+
+
+Problem 1 :  
+	SELECT * FROM titanic WHERE fare = 0;
+
+Problem 2: 
+
+	SELECT COUNT(first) FROM titanic WHERE age > 50 AND embarked="Cherbourg" AND first LIKE "Mrs%" ;
+
+
+Problem 3:
+	 SELECT embarked  FROM titanic WHERE fare = (SELECT max(fare) FROM titanic) ;
+
+
+Problem 4:  
+	SELECT last, COUNT(last) AS value_occurance FROM titanic GROUP BY last order by value_occurance DESC LIMIT 1;
+
+
+Problem 5: 
+	
+	SELECT class,(SELECT COUNT(survived) FROM titanic WHERE survived ='yes'  )/SUM(COUNT(survived)) over(partition by class)  AS survival_rate 
+        FROM titanic 
+	GROUP BY class
+	ORDER BY class asc ;
+
